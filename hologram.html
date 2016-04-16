@@ -1,9 +1,11 @@
 <div id="cont">
   <script>function pegasus(a,b){return b=new XMLHttpRequest,b.open("GET",a),a=[],b.onreadystatechange=b.then=function(c,d,e,f){if(c&&c.call&&(a=[,c,d]),4==b.readyState&&(e=a[0|b.status/200])){try{f=JSON.parse(b.responseText)}catch(g){f=null}e(f,b)}},b.send(),b};</script>
   <h1>
-    Created by CommandFox (Username currently: <span id="uname"></span>).
+    Created by CommandFox
+  </h1><h3>
+    (Username currently: <span id="uname"></span>).
     <script>pegasus("https://eu.mc-api.net/v3/name/eab51d674e3f49118351793750823468").then(function(data,xhr){document.getElementById("uname").innerHTML=data["name"];});</script>
-  </h1>
+  </h3>
   <p>
     Enter the text into the following box, color codes are allowed (using an & sign), for example <span style="color:#ECA517">&6Gold</span>.
   </p>
