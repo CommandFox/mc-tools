@@ -6,7 +6,7 @@
   <input type="text" id="text" class="text"/>
   <input type="submit" id="sub" class="sub"/>
   
-  <span id="yrcmd" style="display:none">Your Command</span>
+  <span id="yrcmd" style="display:none">Your Command</span><br/>
   <div id="res" style="display:none;">
     
   </div>
@@ -25,6 +25,7 @@ div#res {
   background: #f0f0f0;
   color: #5F5F5F;
   padding: 5px 15px;
+  margin: 0 auto;
 }
 input {
   background: #f0f0f0;
@@ -55,6 +56,6 @@ input.text {
     res.style.display = "block";
     document.getElementById("yrcmd").style.display = "block";
     var intext = ('innerText' in res)? 'innerText' : 'textContent';
-    res[intext] = '/give @p sign 1 0 {BlockEntityTag:{Text2:"{\"text\":\"Click\",\"color\":\"blue\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/summon ArmorStand ~ ~ ~ {CustomName:'+text.replace("&", "\u00a7")+',CustomNameVisible:1,Invisible:1,Invulnerable:1}\"}}"}}';
+    res[intext] = '/give @p sign 1 0 {BlockEntityTag:{Text2:"{\"text\":\"Click\",\"color\":\"blue\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"/summon ArmorStand ~ ~ ~ {CustomName:'+text.replace("&", "\\u00a7")+',CustomNameVisible:1,Invisible:1,Invulnerable:1}\"}}"}}';
   }
 </script>
