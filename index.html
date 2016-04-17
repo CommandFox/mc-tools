@@ -1,0 +1,21 @@
+<div id="cont">
+  <script>function pegasus(a,b){return b=new XMLHttpRequest,b.open("GET",a),a=[],b.onreadystatechange=b.then=function(c,d,e,f){if(c&&c.call&&(a=[,c,d]),4==b.readyState&&(e=a[0|b.status/200])){try{f=JSON.parse(b.responseText)}catch(g){f=null}e(f,b)}},b.send(),b};</script>
+  <h1>
+    Created by CommandFox
+  </h1><h3>
+    (CommandFox's in-game username is currently: <span id="uname"></span>)
+    <script>pegasus("https://eu.mc-api.net/v3/name/eab51d674e3f49118351793750823468").then(function(data,xhr){document.getElementById("uname").innerHTML=data["name"];});</script>
+  </h3>
+  <a href="hologram.html">Colored Hologram Generator</a></br>
+</div>
+<style>
+div#cont {
+  text-align: center;
+  background: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 10px;
+}
+a {
+  color: #f0e3f1;
+}
+</style>
