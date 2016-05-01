@@ -27,11 +27,11 @@
     <script>pegasus("https://eu.mc-api.net/v3/name/eab51d674e3f49118351793750823468").then(function(data,xhr){document.getElementById("uname").innerHTML=data["name"];});</script>
   </h3>
   <p>
-    Enter the tellraw text into the following box, color codes are allowed (using an & sign), for example <span style="color:#ECA517">&6Gold</span>.
+    Enter the tellraw text into the following box, color and formatting codes are allowed (using an & sign), for example <span style="color:#ECA517">&6Gold</span>.
   </p>
 
-  <input type="text" id="text" class="text"/>
-  <input type="text" id="selector" class="text"/>
+  <input type="text" id="text" class="text" placeholder="Text, with formatting codes."/>
+  Selector: <input type="text" id="selector" class="text" style="width: 25%;" placeholder="Selector, e.g. @a, @p, CommandFox or @e[type=Zombie]"/>
   <input type="submit" id="sub" class="sub"/>
   
   <span id="yrcmd" style="display:none">Your Command</span><br/>
