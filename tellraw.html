@@ -133,6 +133,9 @@ function parse(string){
   document.getElementById("sub").onclick = function(){
     var entered = document.getElementById("text").value;
     var select = document.getElementById("selector").value;
+    if(select == ""){
+    	select = "@a";
+    }
     var res = document.getElementById("res");
     res.style.display = "block";
     document.getElementById("yrcmd").style.display = "block";
