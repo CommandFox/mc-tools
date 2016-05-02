@@ -141,6 +141,6 @@ function parse(string){
     document.getElementById("yrcmd").style.display = "block";
     var intext = ('innerText' in res)? 'innerText' : 'textContent';
     
-    res[intext] = "/tellraw " + select.replace(/\s/g, "") + " " + JSON.stringify(parse(entered.replace(/\{|\}|\[|\]/g, "\$1")));
+    res[intext] = "/tellraw " + select.replace(/\s/g, "") + " " + JSON.stringify(parse(entered));
   }
 </script>
