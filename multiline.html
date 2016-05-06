@@ -1,0 +1,97 @@
+<div id="cont">
+	<input type="text" id="text" class="text"/><span id="plus">+</span>
+	<input type="submit" id="sub" class="sub"/>
+
+	<span id="yrcmd" style="display:none">Your Command</span><br/>
+	<textarea id="res" readonly style="display:none;">
+
+	</textarea>
+	<style>
+div#cont {
+	text-align: center;
+	background: #fff;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 10px;
+}
+textarea#res {
+	width: 80%;
+	border: 2px inset;
+	text-align: left;
+	background: #f0f0f0;
+	color: #5F5F5F;
+	padding: 5px 15px;
+	margin: 0 auto;
+	outline: none;
+	height: 100px;
+}
+input {
+	background: #f0f0f0;
+	color: #5F5F5F;
+	border-radius: 5px;
+	padding: 5px 15px;
+	margin: 12px auto;
+	display: block;
+	outline: none;
+}
+input.sub {
+	background: #555;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+}
+input.sub {
+	cursor: pointer;
+}
+input.text {
+	width: 50%;
+}
+#plus {
+	display: inline-block;
+	margin: 10px auto;
+	padding: 5px;
+	background: #f0f0f0;
+	color: #5F5F5F;
+	border-radius: 5px;
+}
+	</style>
+	<script>
+var currenttext = 0;
+var plus = document.getElementById("plus");
+plus.onclick = function(){
+	currenttext += 1;
+	plus.insertAdjacentHTML("beforeBegin",'<input type="text" id="text'+currenttext+'" class="text"/>');
+};
+document.getElementById("sub").onclick = function(){
+	var texts = [];
+	var text_elms = document.getElementsByClassName("text");
+	for(i = 0; i < text_elms.length; i++){
+		console.log(text_elms[i].value);
+		texts.push(text_elms[i].value);
+    }
+    var res = document.getElementById("res");
+    res.style.display = "block";
+    document.getElementById("yrcmd").style.display = "block";
+    var intext = ('innerText' in res)? 'innerText' : 'textContent';
+    var appliance = '/give @p minecraft:sign 1 0 {BlockEntityTag:{Text1:"{\\"text\\":\\"\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"';
+	var end = '';
+	
+	for(i = 0; i < texts.length; i++){
+		console.log(texts[i], i)
+		if (i == 0) {
+			appliance += '/summon Zombie ~ ~ ~ {Passengers:[{id:ArmorStand,NoGravity:1,Tags:[\\\\\\"cfgenaslow\\\\\\"],CustomName:\\\\\\"'+texts[i]+'\\\\\\",CustomNameVisible:1,Invulnerable:1,Invisible:1,Passengers:[';
+			end += "}]}]";
+		} else if (i == texts.length - 1) {
+			appliance += '{id:Zombie,Time:0,Block:0,Passengers:[{id:ArmorStand,NoGravity:1,Tags:[\\\\\\"cfgenas\\\\\\"],CustomName:\\\\\\"'+texts[i]+'\\\\\\",CustomNameVisible:1,Invulnerable:1,Invisible:1' + end + "}]}";
+		} else {
+			appliance += '{id:Zombie,Time:1,Block:0,Passengers:[{id:ArmorStand,NoGravity:1,Tags:[\\\\\\"cfgenas\\\\\\"],CustomName:\\\\\\"'+texts[i]+'\\\\\\",CustomNameVisible:1,Invulnerable:1,Invisible:1,Passengers:[';
+			end += "}]}]";
+		}
+		
+	}
+	
+	appliance += '\\"}}",Text2:"{\\"text\\":\\"Click\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"kill @e[type=Zombie]\\"},\\"color\\":\\"blue\\"}",Text3:"{\\"text\\":\\"Here\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"execute @e[tag=cfgenaslow] ~ ~ ~ /tp @e[tag=cfgenas] ~ ~-2.7 ~\\"},\\"color\\":\\"blue\\"}",Text4:"{\\"text\\":\\"\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"setblock ~ ~ ~ air\\"},\\"color\\":\\"blue\\"}"},display:{Name:"Custom Sign"}}';
+    
+    res[intext] = appliance;
+  }
+	</script>
+</div>
