@@ -113,12 +113,12 @@ document.getElementById("sub").onclick = function(){
 	for(i = 0; i < texts.length; i++){
 		console.log(texts[i], i)
 		if (i == 0) {
-			appliance += '/summon Zombie ~ ~ ~ {Passengers:[{id:ArmorStand,NoGravity:1,Tags:[\\\\\\"cfgenas\\\\\\"],CustomName:\\\\\\"'+texts[i].replace("&","\u00a7")+'\\\\\\",CustomNameVisible:1,Invulnerable:1,Invisible:1,Passengers:[';
+			appliance += '/summon FallingSand ~ ~ ~ {Time:0,Block:0,Data:0,Passengers:[{id:ArmorStand,NoGravity:1,Tags:[\\\\\\"cfgenas\\\\\\"],CustomName:\\\\\\"'+texts[i].replace("&","\u00a7")+'\\\\\\",CustomNameVisible:1,Invulnerable:1,Invisible:1,Passengers:[';
 			end += "}]}]";
 		} else if (i == texts.length - 1) {
-			appliance += '{id:Zombie,Time:0,Block:0,Passengers:[{id:ArmorStand,NoGravity:1,Tags:[\\\\\\"cfgenas\\\\\\"],CustomName:\\\\\\"'+texts[i].replace("&","\u00a7")+'\\\\\\",CustomNameVisible:1,Invulnerable:1,Invisible:1' + end + "}]}";
+			appliance += '{id:FallingSand,Time:0,Block:0,Data:0,Passengers:[{id:ArmorStand,NoGravity:1,Tags:[\\\\\\"cfgenas\\\\\\"],CustomName:\\\\\\"'+texts[i].replace("&","\u00a7")+'\\\\\\",CustomNameVisible:1,Invulnerable:1,Invisible:1' + end + "}]}";
 		} else {
-			appliance += '{id:Zombie,Time:1,Block:0,Passengers:[{id:ArmorStand,NoGravity:1,Tags:[\\\\\\"cfgenas\\\\\\"],CustomName:\\\\\\"'+texts[i].replace("&","\u00a7")+'\\\\\\",CustomNameVisible:1,Invulnerable:1,Invisible:1,Passengers:[';
+			appliance += '{id:FallingSand,Time:1,Block:0,Data:0,Passengers:[{id:ArmorStand,NoGravity:1,Tags:[\\\\\\"cfgenas\\\\\\"],CustomName:\\\\\\"'+texts[i].replace("&","\u00a7")+'\\\\\\",CustomNameVisible:1,Invulnerable:1,Invisible:1,Passengers:[';
 			end += "}]}]";
 		}
 		
