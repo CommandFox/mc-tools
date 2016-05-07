@@ -33,10 +33,12 @@
 	<input type="text" id="text" class="text"/><span id="plus">+</span>
 	<input type="submit" id="sub" class="sub"/>
 
-	<span id="yrcmd" style="display:none">Your Command</span><br/>
+	<span id="yrcmd" style="display:none">Enter into a command block and execute:</span><br/>
 	<textarea id="res" readonly style="display:none;">
 
-	</textarea>
+	</textarea><br/><br/>
+	<span id="yrcmd1" style="display:none">Execute in chat:</span><br/>
+	<textarea id="res1" readonly style="display:none;">/execute @e[tag=cfgenaslow] ~ ~ ~ /tp @e[tag=cfgenas] ~ ~-2.7 ~</textarea>
 	<style>
 div#cont {
 	text-align: center;
@@ -102,7 +104,9 @@ document.getElementById("sub").onclick = function(){
     var res = document.getElementById("res");
     res.style.display = "block";
     document.getElementById("yrcmd").style.display = "block";
+    document.getElementById("yrcmd1").style.display = "block";
     var intext = ('innerText' in res)? 'innerText' : 'textContent';
+    document.getElementById("res1").style.display = "block";
     var appliance = '/give @p minecraft:sign 1 0 {BlockEntityTag:{Text1:"{\\"text\\":\\"\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"';
 	var end = '';
 	
@@ -120,7 +124,7 @@ document.getElementById("sub").onclick = function(){
 		
 	}
 	
-	appliance += '\\"}}",Text2:"{\\"text\\":\\"Click\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"kill @e[type=Zombie]\\"},\\"color\\":\\"blue\\"}",Text3:"{\\"text\\":\\"Here\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"execute @e[tag=cfgenaslow] ~ ~ ~ /tp @e[tag=cfgenas] ~ ~-2.7 ~\\"},\\"color\\":\\"blue\\"}",Text4:"{\\"text\\":\\"\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"setblock ~ ~ ~ air\\"},\\"color\\":\\"blue\\"}"},display:{Name:"Custom Sign"}}';
+	appliance += '\\"}}",Text2:"{\\"text\\":\\"Click\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"kill @e[type=Zombie]\\"},\\"color\\":\\"blue\\"}",Text3:"{\\"text\\":\\"Here\\",\\"color\\":\\"blue\\"}",Text4:"{\\"text\\":\\"\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"setblock ~ ~ ~ air\\"},\\"color\\":\\"blue\\"}"},display:{Name:"Custom Sign"}}';
     
     res[intext] = appliance;
   }
