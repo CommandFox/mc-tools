@@ -104,27 +104,27 @@ document.getElementById("sub").onclick = function(){
     var res = document.getElementById("res");
     res.style.display = "block";
     document.getElementById("yrcmd").style.display = "block";
-    document.getElementById("yrcmd1").style.display = "block";
     var intext = ('innerText' in res)? 'innerText' : 'textContent';
-    document.getElementById("res1").style.display = "block";
-    var appliance = '/give @p minecraft:sign 1 0 {BlockEntityTag:{Text1:"{\\"text\\":\\"\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"';
+    var appliance = '/give @p minecraft:sign 1 0 {BlockEntityTag:{Text2:"{\\"text\\":\\"Click\\",\\"color\\":\\"blue\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"';
 	var end = '';
+	var pos = -0.75;
 	
 	for(i = 0; i < texts.length; i++){
 		console.log(texts[i], i)
 		if (i == 0) {
-			appliance += '/summon Zombie ~ ~ ~ {Passengers:[{id:ArmorStand,NoGravity:1,Tags:[\\\\\\"cfgenas\\\\\\"],CustomName:\\\\\\"'+texts[i].replace("&","\u00a7")+'\\\\\\",CustomNameVisible:1,Invulnerable:1,Invisible:1,Passengers:[';
-			end += "}]}]";
+			appliance += '/summon FallingSand ~ ~1 ~1 {TileID:137,Data:1,Time:1,TileEntityData:{auto:1b,Command:execute @p ~ ~ ~ summon ArmorStand ~ ~'+pos+' ~ {Invisible:1,NoGravity:1,CustomName:\\\\\\"'+texts[i].replace(/\&/g,"\\u00a7")+'\\\\\\",CustomNameVisible:1}},Passengers:[';
+			end += "}]";
 		} else if (i == texts.length - 1) {
-			appliance += '{id:Zombie,Passengers:[{id:ArmorStand,NoGravity:1,Tags:[\\\\\\"cfgenas\\\\\\"],CustomName:\\\\\\"'+texts[i].replace("&","\u00a7")+'\\\\\\",CustomNameVisible:1,Invulnerable:1,Invisible:1' + end + "}]}";
+			appliance += '{id:FallingSand,TileID:137,Data:1,Time:1,TileEntityData:{auto:1b,Command:execute @p ~ ~ ~ summon ArmorStand ~ ~'+pos+' ~ {Invisible:1,NoGravity:1,CustomName:\\\\\\"'+texts[i].replace(/\&/g,"\\u00a7")+'\\\\\\",CustomNameVisible:1}},Passengers:[{id:FallingSand,TileID:137,Data:1,Time:1,TileEntityData:{auto:1b,Command:fill ~ ~ ~-1 ~ ~-'+(texts.length)+' ~ air}}]' + end + "}";
 		} else {
-			appliance += '{id:Zombie,Passengers:[{id:ArmorStand,NoGravity:1,Tags:[\\\\\\"cfgenas\\\\\\"],CustomName:\\\\\\"'+texts[i].replace("&","\u00a7")+'\\\\\\",CustomNameVisible:1,Invulnerable:1,Invisible:1,Passengers:[';
-			end += "}]}]";
+			appliance += '{id:FallingSand,TileID:137,Data:1,Time:1,TileEntityData:{auto:1b,Command:execute @p ~ ~ ~ summon ArmorStand ~ ~'+pos+' ~ {Invisible:1,NoGravity:1,CustomName:\\\\\\"'+texts[i].replace(/\&/g,"\\u00a7")+'\\\\\\",CustomNameVisible:1}},Passengers:[';
+			end += "}]";
 		}
+		pos += 0.25;
 		
 	}
 	
-	appliance += '\\"}}",Text2:"{\\"text\\":\\"Click\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"kill @e[type=Zombie]\\"},\\"color\\":\\"blue\\"}",Text3:"{\\"text\\":\\"Here\\",\\"color\\":\\"blue\\"}",Text4:"{\\"text\\":\\"\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"setblock ~ ~ ~ air\\"},\\"color\\":\\"blue\\"}"},display:{Name:"Custom Sign"}}';
+	appliance += '\\"}}",Text3:"{\\"text\\":\\"Here\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"setblock ~ ~ ~ air\\"},\\"color\\":\\"blue\\"}"},display:{Name:"CommandFox Multiline Hologram"}}';
     
     res[intext] = appliance;
   }
