@@ -84,14 +84,14 @@ input.text {
 function parse(string){
 	var getText = function(text){
   	  var result = "";
-  	  while(text[0] != "&" && text.length > 0){
+  	  while(text[0] != "&" && text.length > 0 && text[0] != "@"){
       	//console.log(result);
       	result += text.substring(0,1);
       	text = text.substring(1);
       }
       return {text:result,rest:text};
      };
-    if(!/\&/.test(string)){
+    if(!/\&|\@/.test(string)){
     	return [string];
     } else{
   	var colors = {"&0":"black","&1":"dark_blue","&2":"dark_green","&3":"dark_aqua","&4":"dark_red","&5":"dark_purple","&6":"gold","&7":"gray","&8":"dark_gray","&9":"blue","&a":"green","&b":"aqua","&c":"red","&d":"purple","&e":"yellow","&f":"white"};
@@ -120,9 +120,26 @@ function parse(string){
           break;
         }
       }
+	  if(string[0] == "@" && /[a-zA-Z]/.test(string[1])){
+		var selector = "@" + string[1];
+		if(string[2] == "["){
+			string = string.substring(3);
+			selector += "[";
+			while(string[0] != "]"){
+				selector += string[0];
+				string = string.substring(1);
+			}
+			current.selector = selector + "]";
+		} else{
+			string = string.substring(2);
+			current.selector = selector;
+		}
+	  }
       var text = getText(string);
       current.text = text.text;
-      
+      if(current.selector){
+		delete current["text"];
+	  }
       string = text.rest;
       result.push(current);
       console.log(current);
