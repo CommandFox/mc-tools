@@ -38,7 +38,7 @@
 
 	</textarea><br/><br/>
 	<span id="yrcmd1" style="display:none">Execute in chat:</span><br/>
-	<textarea id="res1" readonly style="display:none;">/execute @e[tag=cfgenaslow] ~ ~ ~ /tp @e[tag=cfgenas] ~ ~-2.7 ~</textarea>
+	<textarea id="res1" readonly style="display:none;">/execute @e[tag=cfgenas] ~ ~ ~ /tp @e[tag=cfgenas,c=-1] ~ ~-2.5 ~</textarea>
 	<style>
 div#cont {
 	text-align: center;
@@ -113,12 +113,12 @@ document.getElementById("sub").onclick = function(){
 	for(i = 0; i < texts.length; i++){
 		console.log(texts[i], i)
 		if (i == 0) {
-			appliance += '/summon Zombie ~ ~ ~ {Passengers:[{id:ArmorStand,NoGravity:1,Tags:[\\\\\\"cfgenaslow\\\\\\"],CustomName:\\\\\\"'+texts[i]+'\\\\\\",CustomNameVisible:1,Invulnerable:1,Invisible:1,Passengers:[';
+			appliance += '/summon Zombie ~ ~ ~ {Passengers:[{id:ArmorStand,NoGravity:1,Tags:[\\\\\\"cfgenas\\\\\\"],CustomName:\\\\\\"'+texts[i].replace("&","\u00a7")+'\\\\\\",CustomNameVisible:1,Invulnerable:1,Invisible:1,Passengers:[';
 			end += "}]}]";
 		} else if (i == texts.length - 1) {
-			appliance += '{id:Zombie,Time:0,Block:0,Passengers:[{id:ArmorStand,NoGravity:1,Tags:[\\\\\\"cfgenas\\\\\\"],CustomName:\\\\\\"'+texts[i]+'\\\\\\",CustomNameVisible:1,Invulnerable:1,Invisible:1' + end + "}]}";
+			appliance += '{id:Zombie,Time:0,Block:0,Passengers:[{id:ArmorStand,NoGravity:1,Tags:[\\\\\\"cfgenas\\\\\\"],CustomName:\\\\\\"'+texts[i].replace("&","\u00a7")+'\\\\\\",CustomNameVisible:1,Invulnerable:1,Invisible:1' + end + "}]}";
 		} else {
-			appliance += '{id:Zombie,Time:1,Block:0,Passengers:[{id:ArmorStand,NoGravity:1,Tags:[\\\\\\"cfgenas\\\\\\"],CustomName:\\\\\\"'+texts[i]+'\\\\\\",CustomNameVisible:1,Invulnerable:1,Invisible:1,Passengers:[';
+			appliance += '{id:Zombie,Time:1,Block:0,Passengers:[{id:ArmorStand,NoGravity:1,Tags:[\\\\\\"cfgenas\\\\\\"],CustomName:\\\\\\"'+texts[i].replace("&","\u00a7")+'\\\\\\",CustomNameVisible:1,Invulnerable:1,Invisible:1,Passengers:[';
 			end += "}]}]";
 		}
 		
