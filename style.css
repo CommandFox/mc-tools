@@ -1,0 +1,64 @@
+html, body {
+	color: #333;
+	background: url(bg.jpg) center center no-repeat #282b34;
+	background-size: cover;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+div#outer {
+	display: inline-flex;
+	min-height: 100%;
+	background: rgba(0, 0, 0, 0.7);
+	width: 100%;
+}
+div#cont {
+  text-align: center;
+  background: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 10px;
+  position: relative;
+  margin: auto auto;
+  width: 50%;
+}
+textarea#res {
+  width: 80%;
+  border: 2px inset;
+  text-align: left;
+  background: #f0f0f0;
+  color: #5F5F5F;
+  padding: 5px 15px;
+  margin: 0 auto;
+  outline: none;
+  height: 100px;
+}
+input {
+  background: #f0f0f0;
+  color: #5F5F5F;
+  padding: 5px 15px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,.12);
+  -moz-box-shadow: 0 2px 3px 0 rgba(0,0,0,.12);
+  box-shadow: 0 2px 3px 0 rgba(0,0,0,.12);
+  margin: 12px auto;
+  display: block;
+  outline: none;
+  width: 50%;
+}
+input.sub {
+  background: #555;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 5px 15px;
+}
+#back-home {
+	background: #777;
+	color: #fefefe;
+	display: inline-block;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	padding: 10px;
+}
