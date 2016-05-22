@@ -1,210 +1,212 @@
-<script>
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	
-	ga('create', 'UA-76519362-1', 'auto');
-	ga('send', 'pageview');
-</script>
-<!-- Hotjar Tracking Code for http://commandfox.github.io/mc-tools/ -->
-<script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:200722,hjsv:5};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+<!DOCTYPE html>
+<html>
+<head>
+
+    <script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-76519362-1', 'auto');
+    ga('send', 'pageview');
+
+    //HotJar Tracking
+
+    (function (h, o, t, j, a, r) {
+        h.hj = h.hj || function () {
+            (h.hj.q = h.hj.q || []).push(arguments)
+        };
+        h._hjSettings = {
+            hjid: 200722,
+            hjsv: 5
+        };
+        a = o.getElementsByTagName('head')[0];
+        r = o.createElement('script');
+        r.async = 1;
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
         a.appendChild(r);
-    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
-<div id="cont">
-	<a id="back-home" href="index.html" style="display:block;position:absolute;top:5px;left:5px;color:#0087FF;">Return to Home</a>
-  <script>function pegasus(a,b){return b=new XMLHttpRequest,b.open("GET",a),a=[],b.onreadystatechange=b.then=function(c,d,e,f){if(c&&c.call&&(a=[,c,d]),4==b.readyState&&(e=a[0|b.status/200])){try{f=JSON.parse(b.responseText)}catch(g){f=null}e(f,b)}},b.send(),b};</script>
-  <h1>
-    Created by CommandFox
-  </h1><h3>
-    (CommandFox's in-game username is currently: <span id="uname"></span>)
-    <script>pegasus("https://eu.mc-api.net/v3/name/eab51d674e3f49118351793750823468").then(function(data,xhr){document.getElementById("uname").innerHTML=data["name"];});</script>
-  </h3>
-  <p>
-    Enter the text into the following inputs. Click the plus button to add a line. Enter a forward slash (/) to run a command, and enter a selector, followed by text (color codes are allowed using an & sign, for example <span style="color:#ECA517">&6Gold</span>), to display a message. To add the new player as a selector add {player} to the command or message.
-  </p>
-	<input type="text" id="text" class="text"/><span id="plus">+</span>
-	<input type="submit" id="sub" class="sub"/>
-
-	<span id="yrcmd" style="display:none">Enter into a command block and execute:</span><br/>
-	<textarea id="res" readonly style="display:none;">
-
-	</textarea><br/><br/>
-	<style>
-div#cont {
-	text-align: center;
-	background: #fff;
-	font-family: Arial, Helvetica, sans-serif;
-	padding: 10px;
-}
-textarea#res, #res1 {
-	width: 80%;
-	border: 2px inset;
-	text-align: left;
-	background: #f0f0f0;
-	color: #5F5F5F;
-	padding: 5px 15px;
-	margin: 0 auto;
-	outline: none;
-	height: 100px;
-}
-input {
-	background: #f0f0f0;
-	color: #5F5F5F;
-	border-radius: 5px;
-	padding: 5px 15px;
-	margin: 12px auto;
-	display: block;
-	outline: none;
-}
-input.sub {
-	background: #555;
-	color: #fff;
-	border: none;
-	padding: 10px 20px;
-}
-input.sub {
-	cursor: pointer;
-}
-input.text {
-	width: 50%;
-}
-#plus {
-	display: inline-block;
-	margin: 10px auto;
-	padding: 5px;
-	background: #f0f0f0;
-	color: #5F5F5F;
-	border-radius: 5px;
-}
-	</style>
-	<script>
-	function parse(string){
-	var getText = function(text){
-  	  var result = "";
-  	  while(text[0] != "&" && text.length > 0 && text[0] != "@"){
-      	//console.log(result);
-      	result += text.substring(0,1);
-      	text = text.substring(1);
-      }
-      return {text:result,rest:text};
-     };
-    if(!/\&|\@/.test(string)){
-    	return [string];
-    } else{
-  	var colors = {"&0":"black","&1":"dark_blue","&2":"dark_green","&3":"dark_aqua","&4":"dark_red","&5":"dark_purple","&6":"gold","&7":"gray","&8":"dark_gray","&9":"blue","&a":"green","&b":"aqua","&c":"red","&d":"purple","&e":"yellow","&f":"white"};
-    var options = {"&l":"bold","&n":"underlined","&o":"italic","&k":"obfuscated","&m":"strikethrough"};
-  	var result = [];
-    var text = getText(string);
-    var current = {color:"none"};
-    var nextCurrent = {};
-    console.log(text.text);
-    result.push(text.text);
-    string = text.rest;
-    loop1: while(string.length > 0){    
-    	nextCurrent.color = "none";
-      current = nextCurrent;
-      nextCurrent = {};
-      loop2: while(string[0] == "&"){				
+    })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script>
+    <title>First Time Join Generator (e.g. Welcome Messages) by CommandFox</title>
+	<link href="style.css" rel="stylesheet">
+</head>
+<body>
+   <div id="outer">
+    <div id="cont">
+        <a href="index.html" id="back-home">&#8619; Return
+        to Home</a> 
+        <script>
+        function pegasus(a, b) {
+            return b = new XMLHttpRequest, b.open("GET", a), a = [], b.onreadystatechange = b.then = function (c, d, e, f) {
+                if (c && c.call && (a = [, c, d]), 4 == b.readyState && (e = a[0 | b.status / 200])) {
+                    try {
+                        f = JSON.parse(b.responseText)
+                    } catch (g) {
+                        f = null
+                    }
+                    e(f, b)
+                }
+            }, b.send(), b
+        };
+        </script>
+        <br/><h2>Created by CommandFox</h1>
+        <h3>CommandFox's IGN is currently <span id="uname">slooFlirpAyppaH</span>
+        <script>
+        pegasus("https://eu.mc-api.net/v3/name/eab51d674e3f49118351793750823468").then(function(data,xhr){document.getElementById("uname").innerHTML=data["name"];});
+        </script></h3>
+        <p>Enter the text into the following inputs. Click the plus button to
+        add a line.<br/> Enter a forward slash (/), followed by a command, to run a command.<br/> Enter a
+        selector, followed by text (color codes are allowed using an & sign,
+        e.g. <span style="color:#ECA517">&6Gold</span>), for a message.<br/> To add the player, that joined for the first time, as a selector in your command or text, add {player} to the
+        command or message.</p><input class="text" id="text" type="text" placeholder="Text, with formatting codes."><span id=
+        "plus">+</span> <button class="sub" id="sub">Generate Command</button> <span id=
+        "yrcmd" style="display:none">Enter into a command block and
+        execute:</span>
+        <textarea id="res" readonly style="display:none;">
+   </textarea><br>
+        <br>
+        <style>
+        #plus {
+			background: #666;
+			color: #fff;
+			border: none;
+			display: inline-block;
+			cursor: pointer;
+			padding: 6px 10px;
+			margin: 2px auto;
+			border-radius: 2px;
+        }
+        </style>
+        <script>
+        function parse(string){
+        var getText = function(text){
+        var result = "";
+        while(text[0] != "&" && text.length > 0 && text[0] != "@"){
+        //console.log(result);
+        result += text.substring(0,1);
+        text = text.substring(1);
+        }
+        return {text:result,rest:text};
+        };
+        if(!/\&|\@/.test(string)){
+        return [string];
+        } else{
+        var colors = {"&0":"black","&1":"dark_blue","&2":"dark_green","&3":"dark_aqua","&4":"dark_red","&5":"dark_purple","&6":"gold","&7":"gray","&8":"dark_gray","&9":"blue","&a":"green","&b":"aqua","&c":"red","&d":"purple","&e":"yellow","&f":"white"};
+        var options = {"&l":"bold","&n":"underlined","&o":"italic","&k":"obfuscated","&m":"strikethrough"};
+        var result = [];
+        var text = getText(string);
+        var current = {color:"none"};
+        var nextCurrent = {};
+        console.log(text.text);
+        result.push(text.text);
+        string = text.rest;
+        loop1: while(string.length > 0){    
+        nextCurrent.color = "none";
+        current = nextCurrent;
+        nextCurrent = {};
+        loop2: while(string[0] == "&"){               
         if(typeof colors[string.substring(0,2)] === "string"){
           current.color = colors[string.substring(0,2)];
           string = string.substring(2);
         } else if(typeof options[string.substring(0,2)] === "string"){
-        	current[options[string.substring(0,2)]] = true;
+            current[options[string.substring(0,2)]] = true;
           nextCurrent[options[string.substring(0,2)]] = false;
           string = string.substring(2);
         } else if(string.substring(0,2) === "&r"){
-        	string = string.substring(2);
+            string = string.substring(2);
           break;
         }
-      }
-	  if(string[0] == "@" && /[a-zA-Z]/.test(string[1])){
-		var selector = "@" + string[1];
-		if(string[2] == "["){
-			string = string.substring(3);
-			selector += "[";
-			while(string[0] != "]"){
-				selector += string[0];
-				string = string.substring(1);
-			}
-			current.selector = selector + "]";
-		} else{
-			string = string.substring(2);
-			current.selector = selector;
-		}
-	  }
-      var text = getText(string);
-      current.text = text.text;
-      if(current.selector){
-		delete current["text"];
-	  }
-      string = text.rest;
-      result.push(current);
-      console.log(current);
-    }
-    return result;
-  }
-}
-var currenttext = 0;
-var plus = document.getElementById("plus");
-plus.onclick = function(){
-	currenttext += 1;
-	plus.insertAdjacentHTML("beforeBegin",'<br/><input type="text" id="text'+currenttext+'" class="text"/>');
-};
-document.getElementById("sub").onclick = function(){
-	var texts = [];
-	var text_elms = document.getElementsByClassName("text");
-	for(i = 0; i < text_elms.length; i++){
-		console.log(text_elms[i].value);
-		texts.push(text_elms[i].value.replace(/\{player\}/g, "@a[tag=!cf_welcome_done]"));
-    }
-    var res = document.getElementById("res");
-    res.style.display = "block";
-    document.getElementById("yrcmd").style.display = "block";
-    var intext = ('innerText' in res)? 'innerText' : 'textContent';
-    appliance = '';
-	end = '';
-	
-	for(i = 0; i < texts.length; i++){
-		if(/^\//.test(texts[i])){
-			var command = "execute @a[tag=!cf_welcome_done] ~ ~ ~ " + texts[i];
-		} else{
-			var txt = texts[i];
-			var selectr = "@a";
-			if(/^\@/.test(texts[i])){
-				txt = txt.substring(1);
-				selectr = "@" + txt[0];
-				txt = txt.substring(1);
-				if(txt[0] == "["){
-					while(txt[0] != "]"){
-						selectr += txt[0];
-						txt = txt.substring(1);
-					}
-					selectr += "]";
-					txt = txt.substring(1);
-				}
-			}
-			var command = "execute @a[tag=!cf_welcome_done] ~ ~ ~ /tellraw " + selectr + " " + JSON.stringify(parse(txt.replace(/^ /, "")));
-		}
-		if(i === 0){
-			appliance += '/summon FallingSand ~ ~1 ~1 {Time:1,Block:repeating_command_block,Data:1,TileEntityData:{auto:1b,Command:'+command+'},Passengers:[';
-			end += ']';
-		} else if(i === texts.length - 1){
-			appliance += '{id:FallingSand,Time:1,Block:chain_command_block,Data:1,TileEntityData:{auto:1b,Command:'+command+'},Passengers:[{id:FallingSand,Time:1,Block:chain_command_block,Data:1,TileEntityData:{auto:1b,Command:"scoreboard players tag @a[tag=!cf_welcome_done] add cf_welcome_done"}}]}' + end + '}';
-		} else{
-			appliance += '{id:FallingSand,Time:1,Block:chain_command_block,Data:1,TileEntityData:{auto:1b,Command:'+command+'},Passengers:[';
-			end += ']}';
-		}
-	}
-    
-    res[intext] = appliance;
-  }
-	</script>
-</div>
+        }
+        if(string[0] == "@" && /[a-zA-Z]/.test(string[1])){
+        var selector = "@" + string[1];
+        if(string[2] == "["){
+            string = string.substring(3);
+            selector += "[";
+            while(string[0] != "]"){
+                selector += string[0];
+                string = string.substring(1);
+            }
+            current.selector = selector + "]";
+        } else{
+            string = string.substring(2);
+            current.selector = selector;
+        }
+        }
+        var text = getText(string);
+        current.text = text.text;
+        if(current.selector){
+        delete current["text"];
+        }
+        string = text.rest;
+        result.push(current);
+        console.log(current);
+        }
+        return result;
+        }
+        }
+        var currenttext = 0;
+        var plus = document.getElementById("plus");
+        plus.onclick = function(){
+        currenttext += 1;
+        plus.insertAdjacentHTML("beforeBegin",'<br/><input type="text" id="text'+currenttext+'" class="text" placeholder="Text or command '+(currenttext+1)+', with formatting codes."/>');
+        };
+        document.getElementById("sub").onclick = function(){
+        var texts = [];
+        var text_elms = document.getElementsByClassName("text");
+        for(i = 0; i < text_elms.length; i++){
+        console.log(text_elms[i].value);
+        texts.push(text_elms[i].value.replace(/\{player\}/g, "@a[tag=!cf_welcome_done]"));
+        }
+        var res = document.getElementById("res");
+        res.style.display = "block";
+        document.getElementById("yrcmd").style.display = "block";
+        var intext = ('innerText' in res)? 'innerText' : 'textContent';
+        appliance = '';
+        end = '';
+
+        for(i = 0; i < texts.length; i++){
+        if(/^\//.test(texts[i])){
+            var command = "execute @a[tag=!cf_welcome_done] ~ ~ ~ " + texts[i];
+        } else{
+            var txt = texts[i];
+            var selectr = "@a";
+            if(/^\@/.test(texts[i])){
+                txt = txt.substring(1);
+                selectr = "@" + txt[0];
+                txt = txt.substring(1);
+                if(txt[0] == "["){
+                    while(txt[0] != "]"){
+                        selectr += txt[0];
+                        txt = txt.substring(1);
+                    }
+                    selectr += "]";
+                    txt = txt.substring(1);
+                }
+            }
+            var command = "execute @a[tag=!cf_welcome_done] ~ ~ ~ /tellraw " + selectr + " " + JSON.stringify(parse(txt.replace(/^ /, "")));
+        }
+        if(i === 0){
+            appliance += '/summon FallingSand ~ ~1 ~1 {Time:1,Block:repeating_command_block,Data:1,TileEntityData:{auto:1b,Command:'+command+'},Passengers:[';
+            end += ']';
+        } else if(i === texts.length - 1){
+            appliance += '{id:FallingSand,Time:1,Block:chain_command_block,Data:1,TileEntityData:{auto:1b,Command:'+command+'},Passengers:[{id:FallingSand,Time:1,Block:chain_command_block,Data:1,TileEntityData:{auto:1b,Command:"scoreboard players tag @a[tag=!cf_welcome_done] add cf_welcome_done"}}]}' + end + '}';
+        } else{
+            appliance += '{id:FallingSand,Time:1,Block:chain_command_block,Data:1,TileEntityData:{auto:1b,Command:'+command+'},Passengers:[';
+            end += ']}';
+        }
+        }
+
+        res[intext] = appliance;
+        }
+        </script>
+    </div>
+</body>
+</html>
