@@ -162,8 +162,9 @@
         var texts = [];
         var text_elms = document.getElementsByClassName("text");
         for(i = 0; i < text_elms.length; i++){
-        console.log(text_elms[i].value);
-        texts.push(text_elms[i].value.replace(/\{player\}/g, "@a[tag=!cf_welcome_done]"));
+        if(text_elms[i].value != ""){
+			texts.push(text_elms[i].value.replace(/\{player\}/g, "@a[tag=!cf_welcome_done]"));
+		}
         }
         var res = document.getElementById("res");
         res.style.display = "block";
@@ -173,6 +174,7 @@
         end = '';
 
 		if(texts.length == 1){
+			var i = 0;
 			if(/^\//.test(texts[i])){
 				var command = "execute @a[tag=!cf_welcome_done] ~ ~ ~ " + texts[i];
 			} else if(/^\@/.test(texts[i])){
