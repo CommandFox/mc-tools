@@ -1,3 +1,6 @@
+a {
+	text-decoration: none;
+}
 html, body {
 	color: #333;
 	background: url(bg.jpg) center center no-repeat #282b34;
@@ -32,10 +35,10 @@ textarea#res {
   outline: none;
   height: 100px;
 }
-input {
+input, button {
   background: #f0f0f0;
   color: #5F5F5F;
-  padding: 5px 15px;
+  padding: 8px 15px;
   border: 1px solid #ccc;
   border-radius: 2px;
   -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,.12);
@@ -44,14 +47,16 @@ input {
   margin: 12px auto;
   display: block;
   outline: none;
-  width: 50%;
+  width: 70%;
 }
-input.sub {
-  background: #555;
+button.sub {
+  background: #2961C7;
   color: #fff;
   border: none;
   cursor: pointer;
-  padding: 5px 15px;
+  padding: 10px 15px;
+  margin-top: 12px;
+  width: calc(70% + 32px);
 }
 #back-home {
 	background: #777;
