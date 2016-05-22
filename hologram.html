@@ -1,91 +1,84 @@
-<script>
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	
-	ga('create', 'UA-76519362-1', 'auto');
-	ga('send', 'pageview');
-</script>
-<!-- Hotjar Tracking Code for http://commandfox.github.io/mc-tools/ -->
-<script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:200722,hjsv:5};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
-<div id="cont">
-  <a id="back-home" href="index.html" style="display:block;position:absolute;top:5px;left:5px;color:#0087FF;">Return to Home</a>
-  <script>function pegasus(a,b){return b=new XMLHttpRequest,b.open("GET",a),a=[],b.onreadystatechange=b.then=function(c,d,e,f){if(c&&c.call&&(a=[,c,d]),4==b.readyState&&(e=a[0|b.status/200])){try{f=JSON.parse(b.responseText)}catch(g){f=null}e(f,b)}},b.send(),b};</script>
-  <h1>
-    Created by CommandFox
-  </h1><h3>
-    (CommandFox's in-game username is currently: <span id="uname"></span>)
-    <script>pegasus("https://eu.mc-api.net/v3/name/eab51d674e3f49118351793750823468").then(function(data,xhr){document.getElementById("uname").innerHTML=data["name"];});</script>
-  </h3>
-  <p>
-    Enter the text into the following box, color codes are allowed (using an & sign), for example <span style="color:#ECA517">&6Gold</span>.
-  </p>
+<!DOCTYPE html>
+<html>
+<head>
 
-  <input type="text" id="text" class="text"/>
-  <input type="submit" id="sub" class="sub"/>
-  
-  <span id="yrcmd" style="display:none">Your Command</span><br/>
-  <textarea id="res" readonly style="display:none;">
-    
-  </textarea>
-</div>
-<style>
-div#cont {
-  text-align: center;
-  background: #fff;
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 10px;
-}
-textarea#res {
-  width: 80%;
-  border: 2px inset;
-  text-align: left;
-  background: #f0f0f0;
-  color: #5F5F5F;
-  padding: 5px 15px;
-  margin: 0 auto;
-  outline: none;
-  height: 100px;
-}
-input {
-  background: #f0f0f0;
-  color: #5F5F5F;
-  border-radius: 5px;
-  padding: 5px 15px;
-  margin: 12px auto;
-  display: block;
-  outline: none;
-}
-input.sub {
-  background: #555;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-}
-input.sub {
-  cursor: pointer;
-}
-input.text {
-  width: 50%;
-}
-</style>
-<script>
-  document.getElementById("sub").onclick = function(){
+     <script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-76519362-1', 'auto');
+    ga('send', 'pageview');
+
+    //HotJar Tracking
+
+    (function (h, o, t, j, a, r) {
+        h.hj = h.hj || function () {
+            (h.hj.q = h.hj.q || []).push(arguments)
+        };
+        h._hjSettings = {
+            hjid: 200722,
+            hjsv: 5
+        };
+        a = o.getElementsByTagName('head')[0];
+        r = o.createElement('script');
+        r.async = 1;
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script>
+    <title>Hologram Generator by CommandFox</title>
+	<link href="style.css" rel="stylesheet">
+</head>
+<body>
+	<div id="outer">
+    <div id="cont">
+        <a href="index.html" id="back-home">&#8619; Return
+        to Home</a> 
+        <script>
+        function pegasus(a, b) {
+            return b = new XMLHttpRequest, b.open("GET", a), a = [], b.onreadystatechange = b.then = function (c, d, e, f) {
+                if (c && c.call && (a = [, c, d]), 4 == b.readyState && (e = a[0 | b.status / 200])) {
+                    try {
+                        f = JSON.parse(b.responseText)
+                    } catch (g) {
+                        f = null
+                    }
+                    e(f, b)
+                }
+            }, b.send(), b
+        };
+        </script>
+        <br/><h2>Created by CommandFox</h1>
+        <h3>CommandFox's IGN is currently <span id="uname">slooFlirpAyppaH</span>
+        <script>
+        pegasus("https://eu.mc-api.net/v3/name/eab51d674e3f49118351793750823468").then(function(data,xhr){document.getElementById("uname").innerHTML=data["name"];});
+        </script></h3>
+        <p>Enter the text into the following box, color codes are allowed
+        (using an & sign), for example <span style=
+        "color:#ECA517">&6Gold</span>.</p><input class="text" placeholder="Text, with formatting codes." id="text" type=
+        "text"> <button class="sub" id="sub">Generate Command</button> <span id="yrcmd"
+        style="display:none">Your Command</span>
+        <textarea id="res" readonly style="display:none;"></textarea>
+    </div>
+	</div>
+    <script>
+    document.getElementById("sub").onclick = function(){
     var text = document.getElementById("text").value;
     var res = document.getElementById("res");
     res.style.display = "block";
     document.getElementById("yrcmd").style.display = "block";
     var intext = ('innerText' in res)? 'innerText' : 'textContent';
     res[intext] = '/give @p sign 1 0 {BlockEntityTag:{Text2:"{\\"text\\":\\"Click\\",\\"color\\":\\"blue\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"/summon ArmorStand ~ ~ ~ {CustomName:'+text.replace(/\&/g, "\\u00a7")+',CustomNameVisible:1,Invisible:1,Invulnerable:1,NoGravity:1}\\"}}",Text3:"{\\"text\\":\\"Here\\",\\"color\\":\\"blue\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"/setblock ~ ~ ~ air\\"}}"}}';
-  }
-</script>
+    }
+    </script>
+</body>
+</html>
