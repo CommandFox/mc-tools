@@ -1,132 +1,131 @@
-<script>
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	
-	ga('create', 'UA-76519362-1', 'auto');
-	ga('send', 'pageview');
-</script>
-<!-- Hotjar Tracking Code for http://commandfox.github.io/mc-tools/ -->
-<script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:200722,hjsv:5};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+<!DOCTYPE html>
+<html>
+<head>
+
+   <script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-76519362-1', 'auto');
+    ga('send', 'pageview');
+
+    //HotJar Tracking
+
+    (function (h, o, t, j, a, r) {
+        h.hj = h.hj || function () {
+            (h.hj.q = h.hj.q || []).push(arguments)
+        };
+        h._hjSettings = {
+            hjid: 200722,
+            hjsv: 5
+        };
+        a = o.getElementsByTagName('head')[0];
+        r = o.createElement('script');
+        r.async = 1;
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
         a.appendChild(r);
-    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
-</script>
-<div id="cont">
-	<a id="back-home" href="index.html" style="display:block;position:absolute;top:5px;left:5px;color:#0087FF;">Return to Home</a>
-  <script>function pegasus(a,b){return b=new XMLHttpRequest,b.open("GET",a),a=[],b.onreadystatechange=b.then=function(c,d,e,f){if(c&&c.call&&(a=[,c,d]),4==b.readyState&&(e=a[0|b.status/200])){try{f=JSON.parse(b.responseText)}catch(g){f=null}e(f,b)}},b.send(),b};</script>
-  <h1>
-    Created by CommandFox
-  </h1><h3>
-    (CommandFox's in-game username is currently: <span id="uname"></span>)
-    <script>pegasus("https://eu.mc-api.net/v3/name/eab51d674e3f49118351793750823468").then(function(data,xhr){document.getElementById("uname").innerHTML=data["name"];});</script>
-  </h3>
-  <p>
-    Enter the text into the following box, color codes are allowed (using an & sign), for example <span style="color:#ECA517">&6Gold</span>. Click the plus button to add a line.
-  </p>
-	<input type="text" id="text" class="text"/><span id="plus">+</span>
-	<input type="submit" id="sub" class="sub"/>
+    })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
+    </script>
+    <title>Mutiline Hologram Generator by CommandFox</title>
+	<link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div id="outer">
+    <div id="cont">
+        <a href="index.html" id="back-home">&#8619; Return
+        to Home</a> 
+        <script>
+        function pegasus(a, b) {
+            return b = new XMLHttpRequest, b.open("GET", a), a = [], b.onreadystatechange = b.then = function (c, d, e, f) {
+                if (c && c.call && (a = [, c, d]), 4 == b.readyState && (e = a[0 | b.status / 200])) {
+                    try {
+                        f = JSON.parse(b.responseText)
+                    } catch (g) {
+                        f = null
+                    }
+                    e(f, b)
+                }
+            }, b.send(), b
+        };
+        </script>
+        <br/><h2>Created by CommandFox</h1>
+        <h3>CommandFox's IGN is currently <span id="uname">slooFlirpAyppaH</span>
+        <script>
+        pegasus("https://eu.mc-api.net/v3/name/eab51d674e3f49118351793750823468").then(function(data,xhr){document.getElementById("uname").innerHTML=data["name"];});
+        </script></h3>
+        <p class="info">Enter the text into the following box.<br/>Color and formatting codes are allowed (using an & sign), e.g. <span style="color:#ECA517">&6Gold</span>.<br/> Click the plus button to add a
+        line.</p><input class="text" id="text" type="text" placeholder="Text, with formatting codes."><span id=
+        "plus">+</span> <button class="sub" id="sub">Generate Command</button> <span id=
+        "yrcmd" style="display:none">Enter into a command block and
+        execute:</span>
+        <textarea id="res" readonly style="display:none;">
+   </textarea><br>
+        <br>
+        <style>
+        #plus {
+			background: #666;
+			color: #fff;
+			border: none;
+			display: inline-block;
+			cursor: pointer;
+			padding: 6px 10px;
+			margin: 2px auto;
+			border-radius: 2px;
+        }
+        </style>
+        <script>
+        var currenttext = 0;
+        var plus = document.getElementById("plus");
+        plus.onclick = function(){
+        currenttext += 1;
+        plus.insertAdjacentHTML("beforeBegin",'<input type="text" id="text'+currenttext+'" class="text" placeholder="Text, line '+(currenttext+1)+', with formatting codes."/>');
+        };
+        document.getElementById("sub").onclick = function(){
+        var texts = [];
+        var text_elms = document.getElementsByClassName("text");
+        for(i = 0; i < text_elms.length; i++){
+			if(text_elms[i].value != ""){
+				texts.push(text_elms[i].value);
+			}
+        }
+		texts.reverse();
+        var res = document.getElementById("res");
+        res.style.display = "block";
+        document.getElementById("yrcmd").style.display = "block";
+        var intext = ('innerText' in res)? 'innerText' : 'textContent';
+        var appliance = '/give @p minecraft:sign 1 0 {BlockEntityTag:{Text2:"{\\"text\\":\\"Click\\",\\"color\\":\\"blue\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"';
+        var end = '';
+        var pos = -0.75;
 
-	<span id="yrcmd" style="display:none">Enter into a command block and execute:</span><br/>
-	<textarea id="res" readonly style="display:none;">
+        for(i = 0; i < texts.length; i++){
+        console.log(texts[i], i)
+        if (i == 0) {
+            appliance += '/summon FallingSand ~ ~1 ~1 {TileID:137,Data:1,Time:1,TileEntityData:{auto:1b,Command:execute @p ~ ~ ~ summon ArmorStand ~ ~'+pos+' ~ {Invisible:1,NoGravity:1,CustomName:\\\\\\"'+texts[i].replace(/\&/g,"\\u00a7")+'\\\\\\",CustomNameVisible:1}},Passengers:[';
+            end += "}]";
+        } else if (i == texts.length - 1) {
+            appliance += '{id:FallingSand,TileID:137,Data:1,Time:1,TileEntityData:{auto:1b,Command:execute @p ~ ~ ~ summon ArmorStand ~ ~'+pos+' ~ {Invisible:1,NoGravity:1,CustomName:\\\\\\"'+texts[i].replace(/\&/g,"\\u00a7")+'\\\\\\",CustomNameVisible:1}},Passengers:[{id:FallingSand,TileID:137,Data:1,Time:1,TileEntityData:{auto:1b,Command:fill ~ ~ ~-1 ~ ~-'+(texts.length)+' ~ air}}]' + end + "}";
+        } else {
+            appliance += '{id:FallingSand,TileID:137,Data:1,Time:1,TileEntityData:{auto:1b,Command:execute @p ~ ~ ~ summon ArmorStand ~ ~'+pos+' ~ {Invisible:1,NoGravity:1,CustomName:\\\\\\"'+texts[i].replace(/\&/g,"\\u00a7")+'\\\\\\",CustomNameVisible:1}},Passengers:[';
+            end += "}]";
+        }
+        pos += 0.25;
 
-	</textarea><br/><br/>
-	<span id="yrcmd1" style="display:none">Execute in chat:</span><br/>
-	<textarea id="res1" readonly style="display:none;">/execute @e[tag=cfgenas] ~ ~ ~ /tp @e[tag=cfgenas,dy=3.5,rm=1] ~ ~-2.5 ~</textarea>
-	<style>
-div#cont {
-	text-align: center;
-	background: #fff;
-	font-family: Arial, Helvetica, sans-serif;
-	padding: 10px;
-}
-textarea#res, #res1 {
-	width: 80%;
-	border: 2px inset;
-	text-align: left;
-	background: #f0f0f0;
-	color: #5F5F5F;
-	padding: 5px 15px;
-	margin: 0 auto;
-	outline: none;
-	height: 100px;
-}
-input {
-	background: #f0f0f0;
-	color: #5F5F5F;
-	border-radius: 5px;
-	padding: 5px 15px;
-	margin: 12px auto;
-	display: block;
-	outline: none;
-}
-input.sub {
-	background: #555;
-	color: #fff;
-	border: none;
-	padding: 10px 20px;
-}
-input.sub {
-	cursor: pointer;
-}
-input.text {
-	width: 50%;
-}
-#plus {
-	display: inline-block;
-	margin: 10px auto;
-	padding: 5px;
-	background: #f0f0f0;
-	color: #5F5F5F;
-	border-radius: 5px;
-}
-	</style>
-	<script>
-var currenttext = 0;
-var plus = document.getElementById("plus");
-plus.onclick = function(){
-	currenttext += 1;
-	plus.insertAdjacentHTML("beforeBegin",'<input type="text" id="text'+currenttext+'" class="text"/>');
-};
-document.getElementById("sub").onclick = function(){
-	var texts = [];
-	var text_elms = document.getElementsByClassName("text");
-	for(i = 0; i < text_elms.length; i++){
-		console.log(text_elms[i].value);
-		texts.push(text_elms[i].value);
-    }
-    var res = document.getElementById("res");
-    res.style.display = "block";
-    document.getElementById("yrcmd").style.display = "block";
-    var intext = ('innerText' in res)? 'innerText' : 'textContent';
-    var appliance = '/give @p minecraft:sign 1 0 {BlockEntityTag:{Text2:"{\\"text\\":\\"Click\\",\\"color\\":\\"blue\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"';
-	var end = '';
-	var pos = -0.75;
-	
-	for(i = 0; i < texts.length; i++){
-		console.log(texts[i], i)
-		if (i == 0) {
-			appliance += '/summon FallingSand ~ ~1 ~1 {TileID:137,Data:1,Time:1,TileEntityData:{auto:1b,Command:execute @p ~ ~ ~ summon ArmorStand ~ ~'+pos+' ~ {Invisible:1,NoGravity:1,CustomName:\\\\\\"'+texts[i].replace(/\&/g,"\\u00a7")+'\\\\\\",CustomNameVisible:1}},Passengers:[';
-			end += "}]";
-		} else if (i == texts.length - 1) {
-			appliance += '{id:FallingSand,TileID:137,Data:1,Time:1,TileEntityData:{auto:1b,Command:execute @p ~ ~ ~ summon ArmorStand ~ ~'+pos+' ~ {Invisible:1,NoGravity:1,CustomName:\\\\\\"'+texts[i].replace(/\&/g,"\\u00a7")+'\\\\\\",CustomNameVisible:1}},Passengers:[{id:FallingSand,TileID:137,Data:1,Time:1,TileEntityData:{auto:1b,Command:fill ~ ~ ~-1 ~ ~-'+(texts.length)+' ~ air}}]' + end + "}";
-		} else {
-			appliance += '{id:FallingSand,TileID:137,Data:1,Time:1,TileEntityData:{auto:1b,Command:execute @p ~ ~ ~ summon ArmorStand ~ ~'+pos+' ~ {Invisible:1,NoGravity:1,CustomName:\\\\\\"'+texts[i].replace(/\&/g,"\\u00a7")+'\\\\\\",CustomNameVisible:1}},Passengers:[';
-			end += "}]";
-		}
-		pos += 0.25;
-		
-	}
-	
-	appliance += '\\"}}",Text3:"{\\"text\\":\\"Here\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"setblock ~ ~ ~ air\\"},\\"color\\":\\"blue\\"}"},display:{Name:"CommandFox Multiline Hologram"}}';
-    
-    res[intext] = appliance;
-  }
-	</script>
-</div>
+        }
+
+        appliance += '\\"}}",Text3:"{\\"text\\":\\"Here\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"setblock ~ ~ ~ air\\"},\\"color\\":\\"blue\\"}"},display:{Name:"CommandFox Multiline Hologram"}}';
+
+        res[intext] = appliance;
+        }
+        </script>
+    </div>
+</body>
+</html>
