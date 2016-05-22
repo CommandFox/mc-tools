@@ -35,13 +35,13 @@
         a.appendChild(r);
     })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
     </script>
-    <title></title>
+    <title>Tellraw Generator by CommandFox</title>
 	<link href="style.css" rel="stylesheet">
 </head>
 <body>
 	<div id="outer">
     <div id="cont">
-        <a href="index.html" id="back-home">Return
+        <a href="index.html" id="back-home">&#8619; Return
         to Home</a> 
         <script>
         function pegasus(a, b) {
@@ -57,14 +57,13 @@
             }, b.send(), b
         };
         </script>
-        <h1>Created by CommandFox</h1>
-        <h3>(CommandFox's in-game username is currently: <span id=
-        "uname"></span>) 
+        <br/><h2>Created by CommandFox</h1>
+        <h3>CommandFox's IGN is currently <span id="uname">slooFlirpAyppaH</span>
         <script>
         pegasus("https://eu.mc-api.net/v3/name/eab51d674e3f49118351793750823468").then(function(data,xhr){document.getElementById("uname").innerHTML=data["name"];});
         </script></h3>
-        <p class="info">Enter the tellraw text into the following box, color and formatting codes are allowed (using an & sign), for example <span style="color:#ECA517">&6Gold</span>. Player selectors are also allowed for example <span style="color:#8C8C8C">@p</span> and <span style="color:#8C8C8C">@a[score_example_min=1]</span>.</p><input class="text" id="text" placeholder="Text, with formatting codes." type="text"> 
-		Selector: <input class="text" id="selector" placeholder="Selector, e.g. @a, @p, CommandFox or @e[type=Zombie]" type="text"> <input class="sub" id="sub" type="submit">
+        <p class="info">Enter the text into the following box.<br/>Color and formatting codes are allowed (using an & sign), e.g. <span style="color:#ECA517">&6Gold</span>.<br/> Player selectors are also allowed, e.g. <span style="color:#8C8C8C">@p</span> and <span style="color:#8C8C8C">@a[score_example_min=1]</span>.</p><input class="text" id="text" placeholder="Text, with formatting codes." type="text"> 
+		<input class="text" id="selector" placeholder="Selector, e.g. @a, @p, CommandFox or @e[type=Zombie]" type="text"> <button class="sub" id="sub">Generate Command</button>
 		<span id="yrcmd" style="display:none">Your Command</span><br> 
 		<textarea id="res" readonly style="display:none;"></textarea>
     </div>
