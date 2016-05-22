@@ -175,28 +175,31 @@
         for(i = 0; i < texts.length; i++){
         if(/^\//.test(texts[i])){
             var command = "execute @a[tag=!cf_welcome_done] ~ ~ ~ " + texts[i];
-        } else{
+        } else if(/^\@/.test(texts[i])){
             var txt = texts[i];
             var selectr = "@a";
-            if(/^\@/.test(texts[i])){
-                txt = txt.substring(1);
-                selectr = "@" + txt[0];
-                txt = txt.substring(1);
-                if(txt[0] == "["){
-                    while(txt[0] != "]"){
-                        selectr += txt[0];
-                        txt = txt.substring(1);
-                    }
-                    selectr += "]";
-                    txt = txt.substring(1);
-                }
-            }
+			txt = txt.substring(1);
+			selectr = "@" + txt[0];
+			txt = txt.substring(1);
+			if(txt[0] == "["){
+				while(txt[0] != "]"){
+					selectr += txt[0];
+					txt = txt.substring(1);
+				}
+				selectr += "]";
+				txt = txt.substring(1);
+			}
             var command = "execute @a[tag=!cf_welcome_done] ~ ~ ~ /tellraw " + selectr + " " + JSON.stringify(parse(txt.replace(/^ /, "")));
-        }
+        } else{
+			var txt = texts[i];
+            var selectr = "@a";
+			var command = "execute @a[tag=!cf_welcome_done] ~ ~ ~ /tellraw " + selectr + " " + JSON.stringify(parse(txt.replace(/^ /, "")));
+		}
         if(i === 0){
             appliance += '/summon FallingSand ~ ~1 ~1 {Time:1,Block:repeating_command_block,Data:1,TileEntityData:{auto:1b,Command:'+command+'},Passengers:[';
             end += ']';
-        } else if(i === texts.length - 1){
+        } 
+		if(i === texts.length - 1){
             appliance += '{id:FallingSand,Time:1,Block:chain_command_block,Data:1,TileEntityData:{auto:1b,Command:'+command+'},Passengers:[{id:FallingSand,Time:1,Block:chain_command_block,Data:1,TileEntityData:{auto:1b,Command:"scoreboard players tag @a[tag=!cf_welcome_done] add cf_welcome_done"}}]}' + end + '}';
         } else{
             appliance += '{id:FallingSand,Time:1,Block:chain_command_block,Data:1,TileEntityData:{auto:1b,Command:'+command+'},Passengers:[';
