@@ -36,7 +36,7 @@
     })(window, document, '//static.hotjar.com/c/hotjar-', '.js?sv=');
     </script>
     <title>Minecraft Tools by CommandFox</title>
-    <link href="style.css" rel="stylesheet">
+	<link href="style.css" rel="stylesheet">
 </head>
 <body>
 	<div id="outer">
@@ -48,14 +48,16 @@
         <h3>CommandFox's IGN is currently <span id="uname">slooFlirpAyppaH</span>
         <script>
         pegasus("https://eu.mc-api.net/v3/name/eab51d674e3f49118351793750823468").then(function(data,xhr){document.getElementById("uname").innerHTML=data["name"];});
-        </script></h3><a href="hologram.html">Colored Hologram
-        Generator</a>
-        <a href="tellraw.html">Tellraw Command Generator</a>
-        <a href="multiline.html">Multiline Colored Hologram Generator</a><br><br>
+        </script>
+		</h3>
+		<p class="info">A list of tools for Minecraft created by me, CommandFox. I mostly create these tools for the community of <a style="color:#0070FF;" href="http://www.minehut.com/">MineHut</a>, but also for all the other Minecraft players out there!</p>
+		<a class="button" href="hologram.html">Colored Hologram Generator</a>
+        <a class="button" href="tellraw.html">Tellraw Command Generator</a>
+        <a class="button" href="multiline.html">Multiline Colored Hologram Generator</a><br><br>
     </div>
 	<div>
     <style>
-    a {
+    a.button {
 		background: #2961C7;
 		color: #fff;
 		display: block;
