@@ -152,13 +152,18 @@
                         current.selector = selector;
                     }
                 }
-                var text = getText(string);
-                current.text = text.text;
+				console.log(string);
+				var text = getText(string);
+				current.text = text.text;
                 if (current.selector) {
+					var next = JSON.stringify(current);
                     delete current["text"];
+					result.push(current);
+					current = JSON.parse(next);
+					delete current["selector"];
                 }
-                string = text.rest;
-                result.push(current);
+				result.push(current);
+				string = text.rest;
                 console.log(current);
             }
             return result;
