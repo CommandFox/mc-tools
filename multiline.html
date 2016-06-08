@@ -63,8 +63,17 @@
         pegasus("https://eu.mc-api.net/v3/name/eab51d674e3f49118351793750823468").then(function(data,xhr){document.getElementById("uname").innerHTML=data["name"];});
         </script></h3>
         <p class="info">Enter the text into the following box.<br/>Color and formatting codes are allowed (using an & sign), e.g. <span style="color:#ECA517">&6Gold</span>.<br/> Click the plus button to add a
-        line.</p><input class="text" id="text" type="text" placeholder="Text, with formatting codes."><span id=
-        "plus">+</span> <button class="sub" id="sub">Generate Command</button> <span id=
+        line.<br/>Please also choose if you will use this on a multiplayer server or in single player.</p><input class="text" id="text" type="text" placeholder="Text, with formatting codes."><span id=
+        "plus">+</span>
+		<br/><select id="multiplayer">
+			<option value="multiplayer">
+				Multiplayer
+			</option>
+			<option value="singleplayer">
+				Single Player
+			</option>
+		</select><br/>
+		<button class="sub" id="sub">Generate Command</button> <span id=
         "yrcmd" style="display:none">Enter into a command block and
         execute:</span>
         <textarea id="res" readonly style="display:none;">
@@ -102,19 +111,21 @@
         res.style.display = "block";
         document.getElementById("yrcmd").style.display = "block";
         var intext = ('innerText' in res)? 'innerText' : 'textContent';
-        var appliance = '/give @p minecraft:sign 1 0 {BlockEntityTag:{Text2:"{\\"text\\":\\"Click\\",\\"color\\":\\"blue\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"';
+        var appliance = '/give @p minecraft:sign 1 0 {BlockEntityTag:{Text1:"{\\"text\\":\\"\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"/execute @p ~ ~ ~ /summon ArmorStand ~ ~ ~ {CustomName:cf_start_armorstand_mutiline}\\"}}",Text2:"{\\"text\\":\\"Click\\",\\"color\\":\\"blue\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"';
         var end = '';
         var pos = -0.75;
+		var multiplayer = document.getElementById("multiplayer").value == "multiplayer" ? "minecraft:": "";
+		console.log(multiplayer);
 
         for(i = 0; i < texts.length; i++){
         console.log(texts[i], i)
         if (i == 0) {
-            appliance += '/summon FallingSand ~ ~1 ~1 {TileID:137,Data:1,Time:1,TileEntityData:{auto:1b,Command:execute @p ~ ~ ~ summon ArmorStand ~ ~'+pos+' ~ {Invisible:1,NoGravity:1,CustomName:\\\\\\"'+texts[i].replace(/\&/g,"\\u00a7")+'\\\\\\",CustomNameVisible:1}},Passengers:[';
+            appliance += '/summon FallingSand ~ ~1 ~1 {TileID:137,Data:1,Time:1,TileEntityData:{auto:1b,Command:execute @p ~ ~ ~ execute @e[name=cf_start_armorstand_mutiline,type=ArmorStand,c=1] ~ ~ ~ summon ArmorStand ~ ~'+pos+' ~ {Invisible:1,NoGravity:1,CustomName:\\\\\\"'+texts[i].replace(/\&/g,"\\u00a7")+'\\\\\\",CustomNameVisible:1}},Passengers:[';
             end += "}]";
         } else if (i == texts.length - 1) {
-            appliance += '{id:FallingSand,TileID:137,Data:1,Time:1,TileEntityData:{auto:1b,Command:execute @p ~ ~ ~ summon ArmorStand ~ ~'+pos+' ~ {Invisible:1,NoGravity:1,CustomName:\\\\\\"'+texts[i].replace(/\&/g,"\\u00a7")+'\\\\\\",CustomNameVisible:1}},Passengers:[{id:FallingSand,TileID:137,Data:1,Time:1,TileEntityData:{auto:1b,Command:fill ~ ~ ~-1 ~ ~-'+(texts.length)+' ~ air}}]' + end + "}";
+            appliance += '{id:FallingSand,TileID:137,Data:1,Time:1,TileEntityData:{auto:1b,Command:execute @p ~ ~ ~ execute @e[name=cf_start_armorstand_mutiline,type=ArmorStand,c=1] ~ ~ ~ summon ArmorStand ~ ~'+pos+' ~ {Invisible:1,NoGravity:1,CustomName:\\\\\\"'+texts[i].replace(/\&/g,"\\u00a7")+'\\\\\\",CustomNameVisible:1}},Passengers:[{id:FallingSand,TileID:137,Data:1,Time:1,TileEntityData:{auto:1b,Command:execute @p ~ ~ ~ '+multiplayer+'kill @e[name=cf_start_armorstand_mutiline,type=ArmorStand,c=1]},Passengers:[{id:FallingSand,TileID:137,Data:1,Time:1,TileEntityData:{auto:1b,Command:fill ~ ~ ~-1 ~ ~-'+(texts.length + 1)+' ~ air}}]}]' + end + "}";
         } else {
-            appliance += '{id:FallingSand,TileID:137,Data:1,Time:1,TileEntityData:{auto:1b,Command:execute @p ~ ~ ~ summon ArmorStand ~ ~'+pos+' ~ {Invisible:1,NoGravity:1,CustomName:\\\\\\"'+texts[i].replace(/\&/g,"\\u00a7")+'\\\\\\",CustomNameVisible:1}},Passengers:[';
+            appliance += '{id:FallingSand,TileID:137,Data:1,Time:1,TileEntityData:{auto:1b,Command:execute @p ~ ~ ~ execute @e[name=cf_start_armorstand_mutiline,type=ArmorStand,c=1] ~ ~ ~ summon ArmorStand ~ ~'+pos+' ~ {Invisible:1,NoGravity:1,CustomName:\\\\\\"'+texts[i].replace(/\&/g,"\\u00a7")+'\\\\\\",CustomNameVisible:1}},Passengers:[';
             end += "}]";
         }
         pos += 0.25;
