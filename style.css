@@ -1,6 +1,5 @@
 a {
 	text-decoration: none;
-	color: #2961C7;
 }
 html, body {
 	color: #333;
@@ -54,6 +53,20 @@ input, button {
   outline: none;
   width: 70%;
 }
+select {
+  background: #f0f0f0;
+  color: #5F5F5F;
+  padding: 8px 15px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 2px 3px 0 rgba(0,0,0,.12);
+  -moz-box-shadow: 0 2px 3px 0 rgba(0,0,0,.12);
+  box-shadow: 0 2px 3px 0 rgba(0,0,0,.12);
+  margin: 12px auto;
+  display: block;
+  outline: none;
+  width: 70%;
+}
 button.sub {
   background: #2961C7;
   color: #fff;
@@ -65,7 +78,7 @@ button.sub {
 }
 #back-home {
 	background: #777;
-	color: #fefefe;
+	color: #fefefe !important;
 	display: inline-block;
 	position: absolute;
 	top: 5px;
