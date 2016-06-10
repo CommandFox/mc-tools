@@ -111,7 +111,7 @@
         res.style.display = "block";
         document.getElementById("yrcmd").style.display = "block";
         var intext = ('innerText' in res)? 'innerText' : 'textContent';
-        var appliance = '/give @p minecraft:sign 1 0 {BlockEntityTag:{Text1:"{\\"text\\":\\"\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"/execute @p ~ ~ ~ /summon ArmorStand ~ ~ ~ {CustomName:cf_start_armorstand_mutiline}\\"}}",Text2:"{\\"text\\":\\"Click\\",\\"color\\":\\"blue\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"';
+        var appliance = '/'+multiplayer+'give @p minecraft:sign 1 0 {BlockEntityTag:{Text1:"{\\"text\\":\\"\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"/execute @p ~ ~ ~ /summon ArmorStand ~ ~ ~ {CustomName:cf_start_armorstand_mutiline}\\"}}",Text2:"{\\"text\\":\\"Click\\",\\"color\\":\\"blue\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"';
         var end = '';
         var pos = -0.75;
 		var multiplayer = document.getElementById("multiplayer").value == "multiplayer" ? "minecraft:": "";
