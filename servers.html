@@ -38,10 +38,12 @@
 <body>
 	<div id="outer">
     <div id="cont">
+    	<a href="index.html" id="back-home">&#8619; Return
+        to Home</a> 
         <script>
         function pegasus(a,b){return b=new XMLHttpRequest,b.open("GET",a),a=[],b.onreadystatechange=b.then=function(c,d,e,f){if(c&&c.call&&(a=[,c,d]),4==b.readyState&&(e=a[0|b.status/200])){try{f=JSON.parse(b.responseText)}catch(g){f=null}e(f,b)}},b.send(),b};
         </script>
-        <br/><h2>Created by CommandFox</h1>
+        <br/><h2>Website by CommandFox</h1>
         <h3>CommandFox's IGN is currently <span id="uname">slooFlirpAyppaH</span>
         <script>
         pegasus("https://eu.mc-api.net/v3/name/eab51d674e3f49118351793750823468").then(function(data,xhr){document.getElementById("uname").innerHTML=data["name"];});
