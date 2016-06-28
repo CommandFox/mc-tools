@@ -146,8 +146,33 @@
                             selector += string[0];
                             string = string.substring(1);
                         }
-                        current.selector = selector + "]";
-                    } else {
+						console.log(string[0]);
+						current.selector = selector + "]";
+						if (string[1] == "-" && string[2] == ">") {
+							string = string.substring(3);
+							var score = {name:selector+"]"};
+							var objective = "";
+							while (string[0] != " " && string != "") {
+								objective += string[0];
+								string = string.substring(1);
+							}
+							score.objective = objective;
+							current.score = score;
+							delete current["selector"];
+						}
+                        
+                    } else if (string[2] == "-" && string[3] == ">") {
+						string = string.substring(4);
+						var score = {name:selector};
+						var objective = "";
+						while (string[0] != " " && string != "") {
+                            objective += string[0];
+                            string = string.substring(1);
+                        }
+						score.objective = objective;
+						current.score = score;
+						delete current["selector"];
+					} else {
                         string = string.substring(2);
                         current.selector = selector;
                     }
@@ -161,11 +186,24 @@
 					result.push(current);
 					current = JSON.parse(next);
 					delete current["selector"];
-                }
+                } else if(current.score) {
+					var next = JSON.stringify(current);
+                    delete current["text"];
+					result.push(current);
+					current = JSON.parse(next);
+					delete current["score"];
+				}
 				result.push(current);
 				string = text.rest;
                 console.log(current);
             }
+			if(result[0] == [] || ( !result[0].text && !result[0].selector && !result[0].score ) ){
+				result.shift();
+			}
+			var lastres = result[ result.length - 1 ];
+			if(lastres == [] || ( !lastres.text && !lastres.selector && !lastres.score ) ){
+				result.pop();
+			}
             return result;
         }
     }
