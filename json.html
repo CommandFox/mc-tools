@@ -203,11 +203,11 @@
 				string = text.rest;
                 console.log(current);
             }
-			if(result[0] == [] || ( !result[0].text && !result[0].selector && !result[0].score ) ){
+			if(result[0] == "" || ( typeof result[0] !== "string" && !result[0].text && !result[0].selector && !result[0].score ) ){
 				result.shift();
 			}
 			var lastres = result[ result.length - 1 ];
-			if(lastres == [] || ( !lastres.text && !lastres.selector && !lastres.score ) ){
+			if(lastres == "" || ( typeof lastres !== "string" && !lastres.text && !lastres.selector && !lastres.score ) ){
 				result.pop();
 			}
             return result;
