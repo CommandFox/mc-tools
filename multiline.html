@@ -42,26 +42,8 @@
     <div id="outer">
     <div id="cont">
         <a href="index.html" id="back-home">&#8619; Return
-        to Home</a> 
-        <script>
-        function pegasus(a, b) {
-            return b = new XMLHttpRequest, b.open("GET", a), a = [], b.onreadystatechange = b.then = function (c, d, e, f) {
-                if (c && c.call && (a = [, c, d]), 4 == b.readyState && (e = a[0 | b.status / 200])) {
-                    try {
-                        f = JSON.parse(b.responseText)
-                    } catch (g) {
-                        f = null
-                    }
-                    e(f, b)
-                }
-            }, b.send(), b
-        };
-        </script>
+        to Home</a>
         <br/><h2>Created by CommandFox</h1>
-        <h3>CommandFox's IGN is currently <span id="uname">slooFlirpAyppaH</span>
-        <script>
-        pegasus("https://eu.mc-api.net/v3/name/eab51d674e3f49118351793750823468").then(function(data,xhr){document.getElementById("uname").innerHTML=data["name"];});
-        </script></h3>
         <p class="info">Enter the text into the following box.<br/>Color and formatting codes are allowed (using an & sign), e.g. <span style="color:#ECA517">&6Gold</span>.<br/> Click the plus button to add a
         line.<br/>Please also choose if you will use this on a multiplayer server or in single player.</p><input class="text" id="text" type="text" placeholder="Text, with formatting codes."><span id=
         "plus">+</span>
@@ -115,7 +97,7 @@
         var appliance = '/'+multiplayer+'give @p minecraft:sign 1 0 {BlockEntityTag:{Text1:"{\\"text\\":\\"\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"/execute @p ~ ~ ~ /summon ArmorStand ~ ~ ~ {CustomName:cf_start_armorstand_mutiline}\\"}}",Text2:"{\\"text\\":\\"Click\\",\\"color\\":\\"blue\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"';
         var end = '';
         var pos = -0.75;
-		
+
 		console.log(multiplayer);
 
         for(i = 0; i < texts.length; i++){

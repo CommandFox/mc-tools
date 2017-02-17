@@ -42,26 +42,8 @@
    <div id="outer">
     <div id="cont">
         <a href="index.html" id="back-home">&#8619; Return
-        to Home</a> 
-        <script>
-        function pegasus(a, b) {
-            return b = new XMLHttpRequest, b.open("GET", a), a = [], b.onreadystatechange = b.then = function (c, d, e, f) {
-                if (c && c.call && (a = [, c, d]), 4 == b.readyState && (e = a[0 | b.status / 200])) {
-                    try {
-                        f = JSON.parse(b.responseText)
-                    } catch (g) {
-                        f = null
-                    }
-                    e(f, b)
-                }
-            }, b.send(), b
-        };
-        </script>
+        to Home</a>
         <br/><h2>Created by CommandFox</h1>
-        <h3>CommandFox's IGN is currently <span id="uname">slooFlirpAyppaH</span>
-        <script>
-        pegasus("https://eu.mc-api.net/v3/name/eab51d674e3f49118351793750823468").then(function(data,xhr){document.getElementById("uname").innerHTML=data["name"];});
-        </script></h3>
         <p>Enter the text into the following inputs. Click the plus button to
         add a line.<br/> Enter a forward slash (/), followed by a command, to run a command.<br/> Enter a
         selector, followed by text (color codes are allowed using an & sign,
@@ -108,11 +90,11 @@
         console.log(text.text);
         result.push(text.text);
         string = text.rest;
-        loop1: while(string.length > 0){    
+        loop1: while(string.length > 0){
         nextCurrent.color = "none";
         current = nextCurrent;
         nextCurrent = {};
-        loop2: while(string[0] == "&"){               
+        loop2: while(string[0] == "&"){
         if(typeof colors[string.substring(0,2)] === "string"){
           current.color = colors[string.substring(0,2)];
           string = string.substring(2);
@@ -197,10 +179,10 @@
 				var selectr = "@a";
 				var command = "execute @a[tag=!cf_welcome_done] ~ ~ ~ /tellraw " + selectr + " " + JSON.stringify(parse(txt.replace(/^ /, "")));
 			}
-			
+
 			appliance = '/summon FallingSand ~ ~1 ~1 {Time:1,Block:repeating_command_block,Data:1,TileEntityData:{auto:1b,Command:'+command+'},Passengers:[{id:FallingSand,Time:1,Block:chain_command_block,Data:1,TileEntityData:{auto:1b,Command:"scoreboard players tag @a[tag=!cf_welcome_done] add cf_welcome_done"}}]}';
 		} else{
-		
+
         for(i = 0; i < texts.length; i++){
         if(/^\//.test(texts[i])){
             var command = "execute @a[tag=!cf_welcome_done] ~ ~ ~ " + texts[i];

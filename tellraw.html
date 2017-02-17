@@ -43,33 +43,34 @@
 	<div id="outer">
     <div id="cont">
         <a href="index.html" id="back-home">&#8619; Return
-        to Home</a> 
-        <script>
-        function pegasus(a, b) {
-            return b = new XMLHttpRequest, b.open("GET", a), a = [], b.onreadystatechange = b.then = function (c, d, e, f) {
-                if (c && c.call && (a = [, c, d]), 4 == b.readyState && (e = a[0 | b.status / 200])) {
-                    try {
-                        f = JSON.parse(b.responseText)
-                    } catch (g) {
-                        f = null
-                    }
-                    e(f, b)
-                }
-            }, b.send(), b
-        };
-        </script>
+        to Home</a>
         <br/><h2>Created by CommandFox</h1>
-        <h3>CommandFox's IGN is currently <span id="uname">slooFlirpAyppaH</span>
-        <script>
-        pegasus("https://eu.mc-api.net/v3/name/eab51d674e3f49118351793750823468").then(function(data,xhr){document.getElementById("uname").innerHTML=data["name"];});
-        </script></h3>
-        <p class="info">Enter the text into the following box.<br/>Color and formatting codes are allowed (using an & sign), e.g. <span style="color:#ECA517">&6Gold</span>.<br/> Player selectors are also allowed, e.g. <span style="color:#8C8C8C">@p</span> and <span style="color:#8C8C8C">@a[score_example_min=1]</span>.<br/> To show the value of a scoreboard objective of a specific player or entity, add a <span style="color:#8C8C8C">-></span> after a selector, followed by a scoreboard objective's name, e.g. <span style="color:#8C8C8C">@p->kills</span> and <span style="color:#8C8C8C">@a[score_deaths_min=1]->deaths</span>.</p><input class="text" id="text" placeholder="Text, with formatting codes." type="text"> 
-		<input class="text" id="selector" placeholder="Selector, e.g. @a, @p, CommandFox or @e[type=Zombie]" type="text"> <button class="sub" id="sub">Generate Command</button>
+        <p class="info">Enter the text into the following box.<br/>Color and formatting codes are allowed (using an & sign), e.g. <span style="color:#ECA517">&6Gold</span>.<br/> Player selectors are also allowed, e.g. <span style="color:#8C8C8C">@p</span> and <span style="color:#8C8C8C">@a[score_example_min=1]</span>.<br/> To show the value of a scoreboard objective of a specific player or entity, add a <span style="color:#8C8C8C">-></span> after a selector, followed by a scoreboard objective's name, e.g. <span style="color:#8C8C8C">@p->kills</span> and <span style="color:#8C8C8C">@a[score_deaths_min=1]->deaths</span>.</p><input class="text" id="text" placeholder="Text, with formatting codes." type="text">
+		<input class="text" id="selector" placeholder="Selector, e.g. @a, @p, CommandFox or @e[type=Zombie]" type="text"> <span id=
+        "plus">+</span> <button class="sub" id="sub">Generate Command</button>
 		<span id="yrcmd" style="display:none">Your Command</span>
 		<textarea id="res" readonly style="display:none;"></textarea>
     </div>
 	</div>
+	<style>
+	#plus {
+		background: #666;
+		color: #fff;
+		border: none;
+		display: inline-block;
+		cursor: pointer;
+		padding: 6px 10px;
+		margin: 2px auto;
+		border-radius: 2px;
+	}
+	</style>
     <script>
+	var currenttext = 0;
+	var plus = document.getElementById("plus");
+	plus.onclick = function(){
+	currenttext += 1;
+	document.getElementById("selector").insertAdjacentHTML("beforeBegin",'<input type="text" id="text'+currenttext+'" class="text" placeholder="Text '+(currenttext+1)+', with formatting codes."/>');
+	};
     function parse(string) {
         var getText = function (text) {
             var result = "";
@@ -157,7 +158,7 @@
 							current.score = score;
 							delete current["selector"];
 						}
-                        
+
                     } else if (string[2] == "-" && string[3] == ">") {
 						string = string.substring(4);
 						var score = {name:selector};
@@ -203,7 +204,17 @@
         }
     }
     document.getElementById("sub").onclick = function () {
-        var entered = document.getElementById("text").value;
+        var elementsText = document.getElementsByClassName("text");
+		var entered = "";
+		var elmCount = 0;
+		for(var q = 0; q < elementsText.length; q++){
+			var currentElm = elementsText[q];
+			if(currentElm.getAttribute("id") == "selector"){
+				continue;
+			}
+			entered += (elmCount == 0 ? "" : "\n") + currentElm.value;
+			elmCount++;
+		}
         var select = document.getElementById("selector").value;
         if (select == "") {
             select = "@a";

@@ -41,15 +41,7 @@
 <body>
 	<div id="outer">
     <div id="cont">
-        <script>
-        function pegasus(a,b){return b=new XMLHttpRequest,b.open("GET",a),a=[],b.onreadystatechange=b.then=function(c,d,e,f){if(c&&c.call&&(a=[,c,d]),4==b.readyState&&(e=a[0|b.status/200])){try{f=JSON.parse(b.responseText)}catch(g){f=null}e(f,b)}},b.send(),b};
-        </script>
         <br/><h2>Created by CommandFox</h1>
-        <h3>CommandFox's IGN is currently <span id="uname">slooFlirpAyppaH</span>
-        <script>
-        pegasus("https://eu.mc-api.net/v3/name/eab51d674e3f49118351793750823468").then(function(data,xhr){document.getElementById("uname").innerHTML=data["name"];});
-        </script>
-		</h3>
 		<p class="info">A list of tools for Minecraft created by me, CommandFox. I mostly create these tools for the community of <a style="color:#0070FF;" href="http://www.minehut.com/">MineHut</a>, but also for all the other Minecraft players out there!</p>
 		<a class="button" href="hologram.html">Colored Hologram Generator</a>
         <a class="button" href="multiline.html">Multiline Colored Hologram Generator</a>
