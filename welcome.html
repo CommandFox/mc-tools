@@ -180,7 +180,7 @@
 				var command = "execute @a[tag=!cf_welcome_done] ~ ~ ~ /tellraw " + selectr + " " + JSON.stringify(parse(txt.replace(/^ /, "")));
 			}
 
-			appliance = '/summon FallingSand ~ ~1 ~1 {Time:1,Block:repeating_command_block,Data:1,TileEntityData:{auto:1b,Command:'+command+'},Passengers:[{id:FallingSand,Time:1,Block:chain_command_block,Data:1,TileEntityData:{auto:1b,Command:"scoreboard players tag @a[tag=!cf_welcome_done] add cf_welcome_done"}}]}';
+			appliance = '/summon falling_block ~ ~1 ~1 {Time:1,Block:repeating_command_block,Data:1,TileEntityData:{auto:1b,Command:'+command+'},Passengers:[{id:falling_block,Time:1,Block:chain_command_block,Data:1,TileEntityData:{auto:1b,Command:"scoreboard players tag @a[tag=!cf_welcome_done] add cf_welcome_done"}}]}';
 		} else{
 
         for(i = 0; i < texts.length; i++){
@@ -207,12 +207,12 @@
 			var command = "execute @a[tag=!cf_welcome_done] ~ ~ ~ /tellraw " + selectr + " " + JSON.stringify(parse(txt.replace(/^ /, "")));
 		}
         if(i === 0){
-            appliance += '/summon FallingSand ~ ~1 ~1 {Time:1,Block:repeating_command_block,Data:1,TileEntityData:{auto:1b,Command:'+command+'},Passengers:[';
+            appliance += '/summon falling_block ~ ~1 ~1 {Time:1,Block:repeating_command_block,Data:1,TileEntityData:{auto:1b,Command:'+command+'},Passengers:[';
             end += ']';
         } else if(i === texts.length - 1){
-            appliance += '{id:FallingSand,Time:1,Block:chain_command_block,Data:1,TileEntityData:{auto:1b,Command:'+command+'},Passengers:[{id:FallingSand,Time:1,Block:chain_command_block,Data:1,TileEntityData:{auto:1b,Command:"scoreboard players tag @a[tag=!cf_welcome_done] add cf_welcome_done"}}]}' + end + '}';
+            appliance += '{id:falling_block,Time:1,Block:chain_command_block,Data:1,TileEntityData:{auto:1b,Command:'+command+'},Passengers:[{id:falling_block,Time:1,Block:chain_command_block,Data:1,TileEntityData:{auto:1b,Command:"scoreboard players tag @a[tag=!cf_welcome_done] add cf_welcome_done"}}]}' + end + '}';
         } else{
-            appliance += '{id:FallingSand,Time:1,Block:chain_command_block,Data:1,TileEntityData:{auto:1b,Command:'+command+'},Passengers:[';
+            appliance += '{id:falling_block,Time:1,Block:chain_command_block,Data:1,TileEntityData:{auto:1b,Command:'+command+'},Passengers:[';
             end += ']}';
         }
         }
