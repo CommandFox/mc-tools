@@ -192,6 +192,28 @@
 				}
 				result.push(current);
 				string = text.rest;
+				var hasprev = function(prop){
+					var bool = false;
+					for(ic in result){
+						if(!result.hasOwnProperty(ic)){
+							continue;
+						}
+						if(result[ic][prop]){
+							bool = true;
+							break;
+						}
+					}
+					return bool;
+				}
+				var allProps = ["bold","italic","obfuscated","strikethrough","underlined"];
+				for(a in allProps){
+					var ib = allProps[a];
+					if(!allProps.hasOwnProperty(a)){
+						continue;
+					}
+					console.log(hasprev(ib), ib);
+					if(!current[ib] && hasprev(ib)) current[ib] = false;
+				}
             }
 			if(result[0] == "" || ( typeof result[0] !== "string" && !result[0].text && !result[0].selector && !result[0].score ) ){
 				result.shift();
@@ -212,7 +234,7 @@
 			if(currentElm.getAttribute("id") == "selector"){
 				continue;
 			}
-			entered += (elmCount == 0 ? "" : "\n") + currentElm.value;
+			entered += (elmCount == 0 ? "" : " \n") + currentElm.value;
 			elmCount++;
 		}
         var select = document.getElementById("selector").value;
