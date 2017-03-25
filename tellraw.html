@@ -145,6 +145,7 @@
                             selector += string[0];
                             string = string.substring(1);
                         }
+						string = string.substring(1);
 						current.selector = selector + "]";
 						if (string[1] == "-" && string[2] == ">") {
 							string = string.substring(3);
