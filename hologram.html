@@ -60,7 +60,7 @@
     res.style.display = "block";
     document.getElementById("yrcmd").style.display = "block";
     var intext = ('innerText' in res)? 'innerText' : 'textContent';
-    res[intext] = '/give @p sign 1 0 {BlockEntityTag:{Text2:"{\\"text\\":\\"Click\\",\\"color\\":\\"blue\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"/summon armor_stand ~ ~ ~ {CustomName:'+text.replace(/\&/g, "\\u00a7")+',CustomNameVisible:1,Invisible:1,Invulnerable:1,NoGravity:1}\\"}}",Text3:"{\\"text\\":\\"Here\\",\\"color\\":\\"blue\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"/setblock ~ ~ ~ air\\"}}"}}';
+    res[intext] = '/give @p sign 1 0 {BlockEntityTag:{Text2:"{\\"text\\":\\"Click\\",\\"color\\":\\"blue\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"/summon armor_stand ~ ~ ~ {CustomName:\\\"\'+text.replace(/\&/g, "\\u00a7")+'\\\",CustomNameVisible:1,Invisible:1,Invulnerable:1,NoGravity:1}\\"}}",Text3:"{\\"text\\":\\"Here\\",\\"color\\":\\"blue\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"/setblock ~ ~ ~ air\\"}}"}}';
     }
     </script>
 </body>
