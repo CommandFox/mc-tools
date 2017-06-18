@@ -64,7 +64,7 @@
     res.style.display = "block";
     document.getElementById("yrcmd").style.display = "block";
     var intext = ('innerText' in res)? 'innerText' : 'textContent';
-    res[intext] = '/give @p sign 1 0 {BlockEntityTag:{Text2:"{\\"text\\":\\"Click\\",\\"color\\":\\"blue\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"/scoreboard objectives add '+score+' '+type+' '+text.replace(/\&/g, "\\u00a7")+'\\"}}",Text3:"{\\"text\\":\\"Here\\",\\"color\\":\\"blue\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"/setblock ~ ~ ~ air\\"}}",Text4:"{\\"text\\":\\"\\",\\"color\\":\\"blue\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"/scoreboard objectives setdisplay sidebar '+score+'\\"}}"}}';
+    res[intext] = '/give @p sign 1 0 {BlockEntityTag:{Text2:"{\\"text\\":\\"Click\\",\\"color\\":\\"blue\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"/scoreboard objectives add '+score+' '+type+' '+text.replace(/\&/g, "\\\\u00a7")+'\\"}}",Text3:"{\\"text\\":\\"Here\\",\\"color\\":\\"blue\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"/setblock ~ ~ ~ air\\"}}",Text4:"{\\"text\\":\\"\\",\\"color\\":\\"blue\\",\\"clickEvent\\":{\\"action\\":\\"run_command\\",\\"value\\":\\"/scoreboard objectives setdisplay sidebar '+score+'\\"}}"}}';
     }
     </script>
 </body>
