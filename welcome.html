@@ -173,11 +173,11 @@
 					selectr += "]";
 					txt = txt.substring(1);
 				}
-				var command = "\"execute @a[tag=!cf_welcome_done] ~ ~ ~ /tellraw " + selectr + " " + JSON.stringify(parse(txt.replace(/^ /, ""))).replace('"', "\\\"") + '"';
+				var command = "\"execute @a[tag=!cf_welcome_done] ~ ~ ~ /tellraw " + selectr + " " + JSON.stringify(parse(txt.replace(/^ /, ""))).replace(/"/g, "\\\"") + '"';
 			} else{
 				var txt = texts[i];
 				var selectr = "@a";
-				var command = '"execute @a[tag=!cf_welcome_done] ~ ~ ~ /tellraw ' + selectr + " " + JSON.stringify(parse(txt.replace(/^ /, ""))).replace('"', "\\\"") + '"';
+				var command = '"execute @a[tag=!cf_welcome_done] ~ ~ ~ /tellraw ' + selectr + " " + JSON.stringify(parse(txt.replace(/^ /, ""))).replace(/"/g, "\\\"") + '"';
 			}
 
 			appliance = '/summon falling_block ~ ~1 ~1 {Time:1,Block:repeating_command_block,Data:1,TileEntityData:{auto:1b,Command:'+command+'},Passengers:[{id:falling_block,Time:1,Block:chain_command_block,Data:1,TileEntityData:{auto:1b,Command:"scoreboard players tag @a[tag=!cf_welcome_done] add cf_welcome_done"}}]}';
@@ -200,11 +200,11 @@
 				selectr += "]";
 				txt = txt.substring(1);
 			}
-            var command = '"execute @a[tag=!cf_welcome_done] ~ ~ ~ /tellraw ' + selectr + " " + JSON.stringify(parse(txt.replace(/^ /, ""))).replace('"', "\\\"") + '"';
+            var command = '"execute @a[tag=!cf_welcome_done] ~ ~ ~ /tellraw ' + selectr + " " + JSON.stringify(parse(txt.replace(/^ /, ""))).replace(/"/g, "\\\"") + '"';
         } else{
 			var txt = texts[i];
             var selectr = "@a";
-			var command = '"execute @a[tag=!cf_welcome_done] ~ ~ ~ /tellraw ' + selectr + " " + JSON.stringify(parse(txt.replace(/^ /, ""))).replace('"', "\\\"") + '"';
+			var command = '"execute @a[tag=!cf_welcome_done] ~ ~ ~ /tellraw ' + selectr + " " + JSON.stringify(parse(txt.replace(/^ /, ""))).replace(/"/g, "\\\"") + '"';
 		}
         if(i === 0){
             appliance += '/summon falling_block ~ ~1 ~1 {Time:1,Block:repeating_command_block,Data:1,TileEntityData:{auto:1b,Command:'+command+'},Passengers:[';
